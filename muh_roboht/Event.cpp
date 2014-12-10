@@ -19,7 +19,7 @@ EventManager::EventManager()
   _intervalPos = 0;
   
   _subSize = sizeof(_sub) / sizeof(Subscriber);
-  Serial.println("Event Manager created");
+	Serial.println("Event Manager created");
 }
 
 /**
@@ -28,11 +28,13 @@ EventManager::EventManager()
  */
 void EventManager::subscribe(Subscriber sub)
 {
+	//Serial.println("begin subscribe" + (char)_subPos);
   if (_subSize >= _subPos)
   {
     _sub[_subPos] = sub;
     _subPos++;
   }
+ // Serial.println("subscribe complete");
 }
 
 /** 

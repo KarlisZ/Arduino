@@ -1,4 +1,5 @@
 #include "Arduino.h"
+#include "Event.h"
 
 #define I2C_ADDR    0x3F
 #define BACKLIGHT_PIN     3

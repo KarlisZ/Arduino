@@ -4,8 +4,10 @@ const char SerialReader::serialCommandTerminator = ';';
 
 void SerialReader::setup()
 {
-	Serial.begin(9600);
+	Serial.begin(921600);
+	Serial.flush();
 	serialInput.reserve(200);
+	delay(100);
 }
 
 void SerialReader::onSerialCommand(String command)
@@ -35,6 +37,7 @@ void SerialReader::handleEvent()
 
 void SerialReader::trace(String input)
 {
+	//Serial.flush();
 	Serial.println("[Trace] " + input);
 }
 

@@ -1,3 +1,6 @@
+#ifndef SerialReader_h
+#define SerialReader_h
+
 #include "Arduino.h"
 
 class SerialReader
@@ -13,3 +16,5 @@ private:
 	String serialInput;
 	static const char serialCommandTerminator;
 };
+
+#endif

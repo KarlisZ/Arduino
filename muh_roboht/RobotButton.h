@@ -1,4 +1,5 @@
-
+#ifndef RobotButton_h
+#define RobotButton_h
 
 class RobotButton
 {
@@ -9,7 +10,8 @@ public:
 private:
 	static const int buttonPin;
 	int buttonState;
-	int isMovingAllowed;
 	int canChangeMotorState;
 	
 };
+
+#endif

@@ -3,9 +3,14 @@
 // 
 
 #include "Model.h"
+#include "Event.h"
 
-const EventManager Model::evtMgr;
+EventManager* Model::evtMgr;// = new EventManager;
+MotorController* Model::motorController;// = new MotorController();
 
-Model::Model()
+int Model::isMovingAllowed = 0;
+
+void Model::setup()
 {
+	evtMgr = new EventManager();
 }

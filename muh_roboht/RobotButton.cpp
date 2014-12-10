@@ -1,8 +1,6 @@
 #include "RobotButton.h"
+#include "Model.h"
 #include "Arduino.h"
-//#include "Event.h"
-//#include "Model.h"
-
 //const EventManager Model::evtMgr;
 
 
@@ -12,7 +10,7 @@ const int RobotButton::buttonPin = 2;     // the number of the pushbutton pin
 RobotButton::RobotButton()
 {
 	buttonState = 0;
-	isMovingAllowed = 0;
+	Model::isMovingAllowed = 0;
 	canChangeMotorState = 1;
 }
 
@@ -33,13 +31,13 @@ void RobotButton::loopButton()
 	{
 		canChangeMotorState = 0;
 
-		if (isMovingAllowed == 0)
+		if (Model::isMovingAllowed == 0)
 		{
-			isMovingAllowed = 1;
+			Model::isMovingAllowed = 1;
 		}
 		else
 		{
-			isMovingAllowed = 0;
+			Model::isMovingAllowed = 0;
 		}
 	}
 	else if (buttonState == LOW)

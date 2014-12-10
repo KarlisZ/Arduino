@@ -1,14 +1,17 @@
 #include "Main.h"
-#include "Arduino.h"
-
+#include "Model.h"
 
 void Main::setup()
 {
-
-	button.setupButton();
+	//motors = Model::motorController;
 	serialReader.setup();
 
+	Model::setup();
+	button.setupButton();
+	motors.setup();
+
 	serialReader.trace("Setup Complete");
+	
 
 	/*setupDebug();
 	setupSerialReader();
@@ -23,6 +26,7 @@ void Main::setup()
 
 void Main::loop()
 {
+	motors.loop();
 	/*
 	loopButton();
 	loopMotors();

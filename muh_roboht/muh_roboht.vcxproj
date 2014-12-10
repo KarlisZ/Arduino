@@ -74,31 +74,41 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Event.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="MotorController.cpp" />
+    <ClCompile Include="RobotButton.cpp" />
+    <ClCompile Include="SerialReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bootstrap.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="button.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
     <ClInclude Include="debug.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="RobotButton.h">
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="Event.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="EventType.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="Model.h">
       <FileType>CppCode</FileType>
     </ClInclude>
-    <ClInclude Include="motor_control.h">
+    <ClInclude Include="MotorController.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="robot_lcd.h">
       <FileType>CppCode</FileType>
     </ClInclude>
-    <ClInclude Include="serial_reader.h">
+    <ClInclude Include="SerialReader.h">
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="ultrasonic_sensor.h">
