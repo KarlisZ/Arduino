@@ -1,11 +1,9 @@
 #ifndef Model_h
 #define Model_h
 
-//#include "MotorController.h"
-//#include "Event.h"
-
 class MotorController;
 class EventManager;
+class SerialManager;
 
 class Model
 {
@@ -13,7 +11,7 @@ class Model
 		static void setup();
 		static EventManager* evtMgr;
 		static MotorController* motorController;
-		static int isMovingAllowed;
+		static SerialManager* serialManager;
 	private:
 		
 };

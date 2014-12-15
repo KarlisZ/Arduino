@@ -1,16 +1,19 @@
 #ifndef RobotButton_h
 #define RobotButton_h
 
+class EventManager;
+
 class RobotButton
 {
 public:
-	void loopButton();
-	void setupButton();
+	void loop();
+	void setup();
 	RobotButton();
 private:
 	static const int buttonPin;
 	int buttonState;
 	int canChangeMotorState;
+	EventManager *evtMgr;
 	
 };
 

@@ -4,13 +4,17 @@
 
 #include "Model.h"
 #include "Event.h"
+#include "SerialManager.h"
+#include "MotorController.h"
 
-EventManager* Model::evtMgr;// = new EventManager;
-MotorController* Model::motorController;// = new MotorController();
+EventManager* Model::evtMgr;
+MotorController* Model::motorController;
+SerialManager* Model::serialManager;
 
-int Model::isMovingAllowed = 0;
 
 void Model::setup()
 {
+	serialManager = new SerialManager();
 	evtMgr = new EventManager();
+	motorController = new MotorController();
 }

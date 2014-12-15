@@ -38,11 +38,17 @@
             
 typedef unsigned char byte;
 extern "C" void __cxa_pure_virtual() {;}
+
+//
+//
+void serialEvent();
+
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard\pins_arduino.h" 
 #include "H:\Private\arduino\muh_roboht\muh_roboht.ino"
 #include "H:\Private\arduino\muh_roboht\Event.cpp"
 #include "H:\Private\arduino\muh_roboht\Event.h"
+#include "H:\Private\arduino\muh_roboht\EventType.cpp"
 #include "H:\Private\arduino\muh_roboht\EventType.h"
 #include "H:\Private\arduino\muh_roboht\Main.cpp"
 #include "H:\Private\arduino\muh_roboht\Main.h"
@@ -52,8 +58,8 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "H:\Private\arduino\muh_roboht\MotorController.h"
 #include "H:\Private\arduino\muh_roboht\RobotButton.cpp"
 #include "H:\Private\arduino\muh_roboht\RobotButton.h"
-#include "H:\Private\arduino\muh_roboht\SerialReader.cpp"
-#include "H:\Private\arduino\muh_roboht\SerialReader.h"
+#include "H:\Private\arduino\muh_roboht\SerialManager.cpp"
+#include "H:\Private\arduino\muh_roboht\SerialManager.h"
 #include "H:\Private\arduino\muh_roboht\debug.h"
 #include "H:\Private\arduino\muh_roboht\resource.h"
 #include "H:\Private\arduino\muh_roboht\robot_lcd.h"

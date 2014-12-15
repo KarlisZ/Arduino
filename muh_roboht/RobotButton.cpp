@@ -1,7 +1,8 @@
 #include "RobotButton.h"
 #include "Model.h"
 #include "Arduino.h"
-//const EventManager Model::evtMgr;
+#include "Event.h"
+#include "EventType.h"
 
 
 // set pin numbers:
@@ -10,17 +11,18 @@ const int RobotButton::buttonPin = 2;     // the number of the pushbutton pin
 RobotButton::RobotButton()
 {
 	buttonState = 0;
-	Model::isMovingAllowed = 0;
 	canChangeMotorState = 1;
 }
 
-void RobotButton::setupButton()
+void RobotButton::setup()
 {
+	evtMgr = Model::evtMgr;
+
 	// initialize the pushbutton pin as an input:
 	pinMode(buttonPin, INPUT);
 }
 
-void RobotButton::loopButton()
+void RobotButton::loop()
 {
 	// read the state of the pushbutton value:
 	buttonState = digitalRead(buttonPin);
@@ -31,18 +33,15 @@ void RobotButton::loopButton()
 	{
 		canChangeMotorState = 0;
 
-		if (Model::isMovingAllowed == 0)
-		{
-			Model::isMovingAllowed = 1;
-		}
-		else
-		{
-			Model::isMovingAllowed = 0;
-		}
+		Event downEvent = Event(EventType::BUTTON, EventType::BUTTON_DOWN);
+		evtMgr->trigger(downEvent);
 	}
 	else if (buttonState == LOW)
 	{
 		canChangeMotorState = 1;
+
+		Event upEvent = Event(EventType::BUTTON, EventType::BUTTON_UP);
+		evtMgr->trigger(upEvent);
 	}
 }
 

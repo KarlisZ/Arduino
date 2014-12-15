@@ -2,19 +2,19 @@
 #define Main_h
 
 #include "RobotButton.h"
-#include "SerialReader.h"
 #include "MotorController.h"
+#include "SerialManager.h"
 
 class Main
 {
 public:
 	void setup();
 	void loop();
-	SerialReader serialReader;
 
 private:
 	RobotButton button;
-	MotorController motors;
+	MotorController *motors;
+	SerialManager *serial;
 };
 
 #endif

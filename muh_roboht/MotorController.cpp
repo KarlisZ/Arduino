@@ -1,8 +1,9 @@
 #include "MotorController.h"
+#include "Arduino.h"
 #include "EventType.h"
 #include "Model.h"
 #include "Event.h"
-#include "Arduino.h"
+#include "SerialManager.h"
 
 struct ButtonEventListener : public EventTask
 {
@@ -11,31 +12,36 @@ struct ButtonEventListener : public EventTask
 	void execute(Event evt)
 	{
 		String extra = evt.extra;
-
+		
 		if (extra == EventType::BUTTON_DOWN)
 		{
-			Model::motorController->moveForward();
+			
+			MotorController *motors;
+			motors = Model::motorController;
+
+			if (motors->isMoving == false)
+			{
+				motors->moveForward();
+			}
+			else
+			{
+				motors->brake();
+			}
 		}
 
 	}
 
 } ButtonEventListener;
 
-/*MotorController::MotorController(EventManager &t)
-{
-	evtMgr = t;
-};*/
-
 void MotorController::subscribeEvents()
 {
-	//evtMgr = 
-
 	evtMgr->subscribe(Subscriber(EventType::BUTTON, &ButtonEventListener));
 }
 
 void MotorController::setup()
 {
 	evtMgr = Model::evtMgr;
+	serial = Model::serialManager;
 
 	areMotorsStopped = 1;
 
@@ -53,7 +59,7 @@ void MotorController::setup()
 void MotorController::moveForward()
 {
 	areMotorsStopped = 0;
-	isMoving = 1;
+	isMoving = true;
 
 	// motor a fwd half speed
 	digitalWrite(12, HIGH); //Establishes forward direction of Channel A
@@ -65,6 +71,7 @@ void MotorController::moveForward()
 	digitalWrite(8, LOW);   //Disengage the Brake for Channel B
 	analogWrite(11, 255);   //Spins the motor on Channel B at half speed
 
+	serial->trace("Moving forward");
 
 	Event e = Event(EventType::MOTOR, EventType::MOTOR_FWD);
 	evtMgr->trigger(e);
@@ -73,13 +80,18 @@ void MotorController::moveForward()
 void MotorController::brake()
 {
 	areMotorsStopped = 0;
-	isMoving = 0;
+	isMoving = false;
 
 	digitalWrite(9, HIGH);  //Engage the Brake for Channel A
 	digitalWrite(8, HIGH);  //Engage the Brake for Channel B
 
+	serial->trace("Braking");
+
 	Event e = Event(EventType::MOTOR, EventType::MOTOR_BRK);
 	evtMgr->trigger(e);
+
+	//delay(1000);
+	//stopMotorOutputs();
 }
 
 void MotorController::stopMotorOutputs()
@@ -93,12 +105,17 @@ void MotorController::stopMotorOutputs()
 	digitalWrite(9, LOW);  //Disengage the Brake for Channel A
 	digitalWrite(8, LOW);  //Disengage the Brake for Channel B
 
+	//serial->trace("afd");
+
 	Event e = Event(EventType::MOTOR, EventType::MOTOR_IDLE);
 	evtMgr->trigger(e);
 }
 
 void MotorController::loop()
 {
+	// TODO: migrate these to events
+
+	/*
 	if (Model::isMovingAllowed == 1 && isMoving == 0)
 	{
 		moveForward();
@@ -112,6 +129,7 @@ void MotorController::loop()
 	{
 		stopMotorOutputs();
 	}
+	*/
 }
 
 

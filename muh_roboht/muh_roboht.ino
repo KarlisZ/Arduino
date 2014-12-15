@@ -4,6 +4,7 @@
 #include <LiquidCrystal_I2C.h>
 
 #include "Main.h"
+#include "SerialManager.h"
 
 Main app;
 
@@ -14,10 +15,11 @@ void setup()
 
 void loop()
 {
-	//app.loop();
+	app.loop();
 }
 
 void serialEvent()
 {
-	//app.serialReader.handleEvent();
+	//SerialManager *serial = Model::serialManager;
+	//serial->handleEvent();
 }

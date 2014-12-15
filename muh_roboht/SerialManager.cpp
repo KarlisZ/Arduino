@@ -1,22 +1,23 @@
-#include "SerialReader.h"
+#include "SerialManager.h"
 
-const char SerialReader::serialCommandTerminator = ';';
+//const char SerialManager::serialCommandTerminator = ';';
 
-void SerialReader::setup()
+void SerialManager::setup()
 {
 	Serial.begin(921600);
 	Serial.flush();
-	serialInput.reserve(200);
+	//serialInput.reserve(200);
 	delay(100);
 }
 
-void SerialReader::onSerialCommand(String command)
+/*void SerialManager::onSerialCommand(char command)
 {
 	onSerialDebug(serialInput);
 	//onSerialUltrasonic(serialInput);
-}
+}*/
 
-void SerialReader::handleEvent()
+/*
+void SerialManager::handleEvent()
 {
 	while (Serial.available())
 	{
@@ -33,15 +34,15 @@ void SerialReader::handleEvent()
 			serialInput += inChar;
 		}
 	}
-}
+}*/
 
-void SerialReader::trace(String input)
+void SerialManager::trace(String input)
 {
-	//Serial.flush();
 	Serial.println("[Trace] " + input);
 }
 
-void SerialReader::onSerialDebug(String input)
+/*
+void SerialManager::onSerialDebug(char input)
 {
 	trace("Serial input received: " + input);
 
@@ -50,3 +51,4 @@ void SerialReader::onSerialDebug(String input)
 		asm volatile ("  jmp 0");
 	}
 }
+*/

@@ -1,16 +1,14 @@
 #ifndef MotorController_h
 #define MotorController_h
 
-//#include "Event.h"
 #include "Model.h"
 
-//class Model;
 class EventManager;
+class SerialManager;
 
 class MotorController 
 {
 public:
-	//MotorController() : evtMgr(Model::evtMgr) {};
 	void setup();
 	void loop();
 
@@ -18,10 +16,12 @@ public:
 	void brake();
 	void stopMotorOutputs();
 
+	bool isMoving;
+
 private:
-	int isMoving;
 	int areMotorsStopped;
 	EventManager *evtMgr;
+	SerialManager *serial;
 
 	
 	void subscribeEvents();
