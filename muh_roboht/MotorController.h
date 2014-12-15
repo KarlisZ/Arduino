@@ -10,21 +10,20 @@ class MotorController
 {
 public:
 	void setup();
-	void loop();
 
 	void moveForward();
 	void brake();
-	void stopMotorOutputs();
-
+	
 	bool isMoving;
 
 private:
+	void stopMotorOutputs();
+	void subscribeEvents();
+
 	int areMotorsStopped;
 	EventManager *evtMgr;
 	SerialManager *serial;
-
 	
-	void subscribeEvents();
 };
 
 #endif

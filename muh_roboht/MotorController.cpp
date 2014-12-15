@@ -90,12 +90,15 @@ void MotorController::brake()
 	Event e = Event(EventType::MOTOR, EventType::MOTOR_BRK);
 	evtMgr->trigger(e);
 
-	//delay(1000);
-	//stopMotorOutputs();
+	delay(1000);
+	stopMotorOutputs();
 }
 
 void MotorController::stopMotorOutputs()
 {
+
+	serial->trace("Motors Neutral");
+
 	areMotorsStopped = 1;
 
 	analogWrite(3, 0);
@@ -105,48 +108,9 @@ void MotorController::stopMotorOutputs()
 	digitalWrite(9, LOW);  //Disengage the Brake for Channel A
 	digitalWrite(8, LOW);  //Disengage the Brake for Channel B
 
-	//serial->trace("afd");
-
 	Event e = Event(EventType::MOTOR, EventType::MOTOR_IDLE);
 	evtMgr->trigger(e);
 }
-
-void MotorController::loop()
-{
-	// TODO: migrate these to events
-
-	/*
-	if (Model::isMovingAllowed == 1 && isMoving == 0)
-	{
-		moveForward();
-	}
-	else if (Model::isMovingAllowed == 0 && isMoving == 1)
-	{
-		brake();
-		delay(1000);
-	}
-	else if (Model::isMovingAllowed == 0 && isMoving == 0 && areMotorsStopped == 0)
-	{
-		stopMotorOutputs();
-	}
-	*/
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 void tutorialMethod()

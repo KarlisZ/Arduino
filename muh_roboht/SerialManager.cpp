@@ -36,9 +36,18 @@ void SerialManager::handleEvent()
 	}
 }*/
 
+int freeRam()
+{
+	extern int __heap_start, *__brkval;
+	int v;
+	return (int)&v - (__brkval == 0 ? (int)&__heap_start : (int)__brkval);
+}
+
+// too long outputs will kill the program, so careful with trace length
 void SerialManager::trace(String input)
 {
-	Serial.println("[Trace] " + input);
+	Serial.println("[T] " + input);
+	Serial.println("Free ram: " + (String)freeRam());
 }
 
 /*
