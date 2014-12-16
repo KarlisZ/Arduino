@@ -11,9 +11,12 @@ void Main::setup()
 	motors = Model::motorController;
 	motors->setup();
 
+	lcd = Model::lcdManager;
+	lcd->setup();
+
 	button.setup();
 
-	serial->trace("Setup Complete");	
+	serial->trace("Setup Complete");
 
 	/*setupDebug();
 	setupSerialReader();

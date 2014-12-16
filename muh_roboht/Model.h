@@ -4,6 +4,7 @@
 class MotorController;
 class EventManager;
 class SerialManager;
+class LcdManager;
 
 class Model
 {
@@ -12,6 +13,8 @@ class Model
 		static EventManager* evtMgr;
 		static MotorController* motorController;
 		static SerialManager* serialManager;
+		static LcdManager* lcdManager;
+
 	private:
 		
 };

@@ -4,6 +4,7 @@
 #include "RobotButton.h"
 #include "MotorController.h"
 #include "SerialManager.h"
+#include "LcdManager.h"
 
 class Main
 {
@@ -15,6 +16,7 @@ private:
 	RobotButton button;
 	MotorController *motors;
 	SerialManager *serial;
+	LcdManager *lcd;
 };
 
 #endif
