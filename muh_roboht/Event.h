@@ -22,8 +22,8 @@ struct Event
   Event() : label(NULL) {}
   Event(const char *cLabel) : label(cLabel) {}
   Event(const char *cLabel, const char *cExtra) : label(cLabel), extra(cExtra) {}
-  const char *extra;
   const char *label;
+  const char *extra;
 };
 
 /**
@@ -75,9 +75,9 @@ struct TimedTask
   }
   
   unsigned long ms;
-  unsigned long current;
   Event evt;
   boolean alive; // State of the timed task
+  unsigned long current;
 };
 
 /**

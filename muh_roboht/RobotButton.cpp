@@ -11,7 +11,7 @@ const int RobotButton::buttonPin = 2;     // the number of the pushbutton pin
 RobotButton::RobotButton()
 {
 	buttonState = 0;
-	canChangeMotorState = 1;
+	canChangeButtonState = true;
 }
 
 void RobotButton::setup()
@@ -26,19 +26,21 @@ void RobotButton::loop()
 {
 	// read the state of the pushbutton value:
 	buttonState = digitalRead(buttonPin);
+	//Serial.println("button " + (String)buttonState);
+	//Serial.println("state " + (String)canChangeButtonState);
 
 	// check if the pushbutton is pressed.
 	// if it is, the buttonState is HIGH:
-	if (buttonState == HIGH && canChangeMotorState == 1)
+	if (buttonState == HIGH && canChangeButtonState == true)
 	{
-		canChangeMotorState = 0;
+		canChangeButtonState = false;
 
 		Event downEvent = Event(EventType::BUTTON, EventType::BUTTON_DOWN);
 		evtMgr->trigger(downEvent);
 	}
 	else if (buttonState == LOW)
 	{
-		canChangeMotorState = 1;
+		canChangeButtonState = true;
 
 		Event upEvent = Event(EventType::BUTTON, EventType::BUTTON_UP);
 		evtMgr->trigger(upEvent);

@@ -12,7 +12,7 @@ public:
 private:
 	static const int buttonPin;
 	int buttonState;
-	int canChangeMotorState;
+	bool canChangeButtonState;
 	EventManager *evtMgr;
 	
 };

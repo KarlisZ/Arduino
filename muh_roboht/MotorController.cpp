@@ -33,9 +33,29 @@ struct ButtonEventListener : public EventTask
 
 } ButtonEventListener;
 
+struct SensorEventListener : public EventTask
+{
+	using EventTask::execute;
+
+	void execute(Event evt)
+	{
+		String extra = evt.extra;
+		
+		if (extra == EventType::SENSOR_OBJECT_CLOSE_IN_FRONT)
+		{			
+			MotorController *motors;
+			motors = Model::motorController;
+			motors->brake();
+		}
+
+	}
+
+} SensorEventListener;
+
 void MotorController::subscribeEvents()
 {
 	evtMgr->subscribe(Subscriber(EventType::BUTTON, &ButtonEventListener));
+	evtMgr->subscribe(Subscriber(EventType::SENSOR, &SensorEventListener));
 }
 
 void MotorController::setup()

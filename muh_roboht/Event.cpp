@@ -44,7 +44,7 @@ void EventManager::subscribe(Subscriber sub)
 void EventManager::trigger(Event evt)
 {
 	
-	for (int i = 0; i < _subSize; i++)
+	for (unsigned int i = 0; i < _subSize; i++)
   {
     Subscriber *sub = &_sub[i];
 	
@@ -78,7 +78,7 @@ void EventManager::tick()
   unsigned long currentMs = millis();
   unsigned long difference = currentMs - _previousMs;
   
-  for (int i = 0; i < _intervalSize; i++)
+  for (unsigned int i = 0; i < _intervalSize; i++)
   {
     TimedTask *task = &_interval[i];
     

@@ -62,7 +62,7 @@ void serialEvent();
 #include "H:\Private\arduino\muh_roboht\RobotButton.h"
 #include "H:\Private\arduino\muh_roboht\SerialManager.cpp"
 #include "H:\Private\arduino\muh_roboht\SerialManager.h"
+#include "H:\Private\arduino\muh_roboht\UltrasonicSensorManager.cpp"
+#include "H:\Private\arduino\muh_roboht\UltrasonicSensorManager.h"
 #include "H:\Private\arduino\muh_roboht\resource.h"
-#include "H:\Private\arduino\muh_roboht\robot_lcd.h"
-#include "H:\Private\arduino\muh_roboht\ultrasonic_sensor.h"
 #endif

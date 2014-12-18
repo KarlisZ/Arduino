@@ -1,6 +1,7 @@
 //#include <Timer.h>
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
+#include <Timer.h>
 
 #include "Main.h"
 //#include "SerialManager.h"

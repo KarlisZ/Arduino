@@ -14,6 +14,9 @@ public:
 	static const char* BUTTON_DOWN;
 	static const char* BUTTON_UP;
 
+	static const char* SENSOR;
+	static const char* SENSOR_OBJECT_CLOSE_IN_FRONT;
+
 
 };
 

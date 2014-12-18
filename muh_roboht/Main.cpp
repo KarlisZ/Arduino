@@ -1,5 +1,10 @@
 #include "Main.h"
 #include "Model.h"
+#include "RobotButton.h"
+#include "MotorController.h"
+#include "SerialManager.h"
+#include "LcdManager.h"
+#include "UltrasonicSensorManager.h"
 
 void Main::setup()
 {
@@ -8,39 +13,25 @@ void Main::setup()
 	serial = Model::serialManager;
 	serial->setup();
 
+	button = Model::button;
+	button->setup();
+
 	motors = Model::motorController;
 	motors->setup();
 
 	lcd = Model::lcdManager;
 	lcd->setup();
 
-	button.setup();
+	usSensor = Model::usSensorManager;
+	usSensor->setup();
 
 	serial->trace("Setup Complete");
 
-	/*setupDebug();
-	setupSerialReader();
-	setupButton();
-	setupMotors();
-	setupLcd();
-	setupUltrasonicSensor();
-
-	trace("setup complete");
-	*/
 }
 
 
 void Main::loop()
 {
-	/*SerialReader *serial;
-	serial = Model::serialReader;
-	serial->trace("Ram left: " + (String)freeRam());
-	*/
-	//motors.loop();
-	button.loop();
-	/*
-	loopButton();
-	loopMotors();
-	loopUltrasonicSensor();
-	*/
+	button->loop();
+	usSensor->loop();
 }
